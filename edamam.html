@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Food Search</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Food Search</h1>
+
+    <div id="food-view"></div>
+
+    <form id="food-form">
+      <label for="food-input">Search for food</label>
+      <input type="text" id="food-input"><br>
+
+      <!-- This button will trigger our AJAX call -->
+      <input id="find-food" type="submit" value="Food Search">
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      // This .on("click") function will trigger the AJAX Call
+      $("#find-food").on("click", function(event) {
+
+        // event.preventDefault() can be used to prevent an event's default behavior.
+        // Here, it prevents the submit button from trying to submit a form when clicked
+        event.preventDefault();
+
+        // Here we grab the text from the input box
+        $.get('/edamam/search?q=coconut')   
+    .then(data => {
+  console.log(data.hits);
+  data.hits.forEach(nom => $('#results').append(`<p>${nom.recipe.label}</p>`));
+},
+  err => {
+    console.error('Status Code: ', err.status);
+  });
+});
+    </script>
+  </div>
+</body>
+
+</html>
