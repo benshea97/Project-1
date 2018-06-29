@@ -17,10 +17,7 @@ $("#").on("click", function(event) {
     }).then(function(response) {
       console.log(response);
     });
-
-
   
-
   });
 
 // This .on("click") function will trigger the AJAX Call
@@ -40,3 +37,4 @@ $("#").on("click", function(event) {
         });
         // -----------------------------------------------------------------------
       });
+
