@@ -2,15 +2,11 @@
 body {
     /* Typography */
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  
-    /* Visual */
-    background-image: url("../imgs/ignasi_pattern_s.png");
   }
   
   html {
     /* Positioning */
     position: relative;
-  
     /* Box-model */
     min-height: 100%;
   }
@@ -54,7 +50,7 @@ body {
   }
   
   .navbar {
-    background: white;
+    background: black;
     border: none;
   }
   
@@ -87,39 +83,7 @@ body {
     text-align: center;
   }
   /* END CONNECT W/ ME */
-  
-  
-  /* BEGIN FOOTER */
-  .footer {
-    /* Positioning */
-    position: absolute;
-    bottom: 0;
-  
-    /* Box-model */
-    width: 100%;
-    height: 60px;
-  
-    /* Visual */
-    background-color: #666;
-  }
-  
-  .text-muted-footer {
-    /* Box-model */
-    margin-top: 15px;
-  
-    /* Typography */
-    color: #fff;
-  }
-  
-  .two-toned-footer-color {
-    /* Box-model */
-    height: 6px;
-    padding-top: 3px;
-  
-    /* Visual */
-    background-color: #4aaaa5;
-  }
-  /* END FOOTER */
+ 
   /* --- END STYLES FOR ALL PAGES --- */
   
   /* --- PAGE-SPECIFIC STYLES --- */
