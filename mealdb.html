@@ -24,7 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // This .on("click") function will trigger the AJAX Call
-      $("#find-food").on("click", function(event) {
+      $("#food-button").on("click", function(event) {
 
         // event.preventDefault() can be used to prevent an event's default behavior.
         // Here, it prevents the submit button from trying to submit a form when clicked
@@ -42,6 +42,7 @@
           method: "GET",
         }).then(function(response) {
           console.log(response);
+          $("#food-view").text(JSON.stringify(response))
         });
 
 
