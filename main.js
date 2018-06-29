@@ -1,4 +1,4 @@
-$("#find-food").on("click", function(event) {
+$("#").on("click", function(event) {
 
     // event.preventDefault() can be used to prevent an event's default behavior.
     // Here, it prevents the submit button from trying to submit a form when clicked
@@ -17,56 +17,24 @@ $("#find-food").on("click", function(event) {
     }).then(function(response) {
       console.log(response);
     });
-
-
-    // -----------------------------------------------------------------------
-
+  
   });
 
-
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyD22zMFQLX0LSzrND6ccKiFtjQXo4rQFlg",
-    authDomain: "recipe-440f0.firebaseapp.com",
-    databaseURL: "https://recipe-440f0.firebaseio.com",
-    projectId: "recipe-440f0",
-    storageBucket: "",
-    messagingSenderId: "383790739796"
-  };
-
-  firebase.initializeApp(config);
-
-  var database = firebase.database();
-
-
-    var search = "";
-   
-    
-
-    $("#add-search").on("click", function(event) {
-        console.log("click heard");
-
+// This .on("click") function will trigger the AJAX Call
+      $("#").on("click", function(event) {
+        // event.preventDefault() can be used to prevent an event's default behavior.
+        // Here, it prevents the submit button from trying to submit a form when clicked
         event.preventDefault();
-  
-        search = $("#search").val().trim();
-      
-        console.log(search);
-        
-        database.ref().push({
-          search: search,
-          
+        // Here we grab the text from the input box
+        var search = $("#food-input").val();
+        // Here we construct our URL
+        var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + search;
+        $.ajax({
+          url: queryURL,
+          method: "GET",
+        }).then(function(response) {
+          console.log(response);
         });
-       
+        // -----------------------------------------------------------------------
       });
-
-      database.ref().on("child_added", function(snapshot) {
-        // Change the HTML to reflect
-        console.log(snapshot.val().search);
-        $("#search").append(snapshot.val().search + "<br");
-    
-    
-    }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-
-    });
 
