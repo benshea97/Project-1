@@ -9,18 +9,61 @@
 
 <body>
   <div class="container">
-    <h1>Food Search</h1>
-
+    <link rel="stylesheet" href="css.css" media="screen">
     <div id="food-view"></div>
 
-    <form id="food-form">
-      <label for="food-input">Search for food</label>
-      <input type="text" id="food-input"><br>
+ 
+    <body>
 
-      <!-- This button will trigger our AJAX call -->
-      <input id="find-food" type="submit" value="Food Search">
-    </form>
-
+      <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+    
+        <div class="container">
+    
+          <!-- Brand and toggle get grouped for better mobile display -->
+    
+          <div class="navbar-header">
+    
+            <a class="navbar-brand" href="index.html" id="logo">Eat Easy</a>
+    
+          </div>
+    
+          <button class="navbar-toggler collapsed ml-auto" data-toggle="collapse" data-target="#page-nav-collapse" aria-expanded="false">
+    
+              <span class="sr-only">Toggle navigation</span>
+    
+              <span class="icon-bar"></span>
+    
+              <span class="icon-bar"></span>
+    
+              <span class="icon-bar"></span>
+    
+            </button>
+    
+          <!-- Collect the nav links, forms, and other content for toggling -->
+    
+          <div class="collapse navbar-collapse" id="page-nav-collapse">
+    
+            <ul class="nav navbar-nav ml-auto"></ul>
+    
+          </div>
+    
+          <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    
+            <form class="form-inline" action="/action_page.php">
+    
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" id="food-input">
+    
+              <button class="btn btn-success" type="submit" id="food-button">Search</button>
+    
+              <form id="food-form">
+                <label for="food-input">Search for food</label>
+                <input type="text" id="food-input"><br>
+          
+                <!-- This button will trigger our AJAX call -->
+                <input id="find-food" type="submit" value="Food Search">
+              </form>
+          
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // This .on("click") function will trigger the AJAX Call
