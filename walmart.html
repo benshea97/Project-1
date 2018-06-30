@@ -24,11 +24,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // This .on("click") function will trigger the AJAX Call
-      jQuery.ajaxPrefilter(function(options) {
-    if (options.crossDomain && jQuery.support.cors) {
-        options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-    }
-});
+
       $("#find-food").on("click", function(event) {
 
         // event.preventDefault() can be used to prevent an event's default behavior.
@@ -49,6 +45,7 @@
         }).then(function(response) {
           console.log(response);
         });
+
 
 
         // -----------------------------------------------------------------------
