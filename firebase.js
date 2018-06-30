@@ -1,101 +1,61 @@
 
-$("#walmart-button").on("click", function(event) {
-
-    // event.preventDefault() can be used to prevent an event's default behavior.
-    // Here, it prevents the submit button from trying to submit a form when clicked
-    event.preventDefault();
-
-    // Here we grab the text from the input box
-    var search = $("#food-input").val();
-
-    // Here we construct our URL
-    var queryURL = "http://api.walmartlabs.com/v1/search?apiKey=avwfn326ass7ejz97edr7w49&ls&query=" + search;
-
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-      dataType: "jsonp"
-    }).then(function(response) {
-      console.log(response);
-    });
-
-
-    // -----------------------------------------------------------------------
-
-  });
-
-  $("#food-button").on("click", function(event) {
-
-    // event.preventDefault() can be used to prevent an event's default behavior.
-    // Here, it prevents the submit button from trying to submit a form when clicked
-    event.preventDefault();
-
-    // Here we grab the text from the input box
-    var foodSearch = $("#food-input").val();
-
-
-    // Here we construct our URL
-    var queryURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + foodSearch;
-
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-    }).then(function(response) {
-      console.log(response);
-      $("#food-view").text(JSON.stringify(response))
-    });
-
-
-    // -----------------------------------------------------------------------
-
-  });
-
-
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyD22zMFQLX0LSzrND6ccKiFtjQXo4rQFlg",
-    authDomain: "recipe-440f0.firebaseapp.com",
-    databaseURL: "https://recipe-440f0.firebaseio.com",
-    projectId: "recipe-440f0",
+    apiKey: "AIzaSyCD1bODZOBTbf86Xw6IGD06bhQiC94RrY8",
+    authDomain: "eat-easy-f802a.firebaseapp.com",
+    databaseURL: "https://eat-easy-f802a.firebaseio.com",
+    projectId: "eat-easy-f802a",
     storageBucket: "",
-    messagingSenderId: "383790739796"
+    messagingSenderId: "161860057580"
   };
-
   firebase.initializeApp(config);
 
-  var database = firebase.database();
+//Variable to reference database 
+      var database = firebase.database();
 
+//initial values
+var userSearch = "";
+var recipesSaved = "";
 
-    var search = "";
-   
-    
+//Create function that prevents default behavior in the case of an error and that listens for click event
+      $("#search-button").on("click", function(event) {
+      //Prevent default behavior
+      event.preventDefault();
+ 
+      $("user-recipe-input").on("click", function(event) {
+      event.
+      }
 
-    $("#add-search").on("click", function(event) {
-        console.log("click heard");
+      userSearch = $("#user-search-input").val().trim()
+      userRecipe = $("#user-recipe-input").val().trim()
 
-        event.preventDefault();
-  
-        search = $("#search").val().trim();
-      
-        console.log(search);
-        
-        database.ref().push({
-          search: search,
-          
+//Next, because we want to create a collection, we use push to push the added train object to the database.
+      database.ref().push({
+        userSearch: searchesSaved
+        recipesSaved: recipesSaved
         });
-       
+
       });
 
-      database.ref().on("child_added", function(snapshot) {
-        // Change the HTML to reflect
-        console.log(snapshot.val().search);
-        $("#search").append(snapshot.val().search + "<br");
-    
-    
-    }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
+database.ref().on("value", function(snapshot) {
 
-    });
+//Update containers that house searches and saved recipes
+$("user-search-input").text(snapshot.val().userSearch);
+$("user-recipe-input").text(snapshot.val().recipeSaved);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
