@@ -51,7 +51,8 @@ $("button.btn.btn-outline-success.my-2.my-sm-0").on("click", function(){
 })
 
 $(document).on("click",".foodimage", function(){
-
+    first();
+    second();
     $("#rec").empty();
 
     var ititle = $("<h3>").text("Ingredients");
@@ -158,27 +159,69 @@ $(document).on("click",".foodimage", function(){
         vidBox.attr('src', apiVideo);
 
         $("#video").append(vidBox);
-
-       
-            
-
-
-
-
-
-
-
-
-
-        
-
-
-        
-
-
-
       });
 })
+
+// first ingredient walmart search
+function first(event) {
+    event.preventDefault();
+    // Here we grab the text from the input box
+    // var search = $("#food-input").val();
+    // Here we construct our URL
+    var queryURL = "http://api.walmartlabs.com/v1/search?apiKey=avwfn326ass7ejz97edr7w49&ls&query=" + inOne;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      dataType: "jsonp"
+
+    }).then(function(response) {
+      console.log(response);
+      var results = response.items;
+      var price = "$" + results[0].salePrice + "<br>";
+      var name = results[0].name + "<br>";
+      var image = $("<img>" + "<br>");
+      image.attr("src",results[0].mediumImage);
+      var site = results[0].productUrl;
+      var link = ("<div><a href=" + site + " >Walmart.com</a></div>")
+
+      $("#food-view").append(image);
+      $("#food-view").append(price);
+      $("#food-view").append(name);
+      $("#food-view").append(link);
+
+    });
+  }
+//   second ingredient walmart search
+  function second(event) {
+    event.preventDefault();
+    // Here we grab the text from the input box
+    // var search = $("#food-input").val();
+    // Here we construct our URL
+    var queryURL = "http://api.walmartlabs.com/v1/search?apiKey=avwfn326ass7ejz97edr7w49&ls&query=" + inTwo;
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+      dataType: "jsonp"
+
+    }).then(function(response) {
+      console.log(response);
+      var results = response.items;
+      var price = "$" + results[0].salePrice + "<br>";
+      var name = results[0].name + "<br>";
+      var image = $("<img>" + "<br>");
+      image.attr("src",results[0].mediumImage);
+      var site = results[0].productUrl;
+      var link = ("<div><a href=" + site + " >Walmart.com</a></div>")
+
+      $("#food-view").append(image);
+      $("#food-view").append(price);
+      $("#food-view").append(name);
+      $("#food-view").append(link);
+
+    });
+  }
 
 
 
