@@ -151,13 +151,35 @@ $(document).on("click",".foodimage", function(){
 
         // Pulling and Appending Youtube Video
 
-        var apiVideo = results[0].strYoutube;
+    var apiVideo = results[0].strYoutube;
+
+       var embed = apiVideo;
+
+       embed = embed.replace('/watch?v=','/embed/');
+
+       console.log(embed)
+       
+
+       var linktovideo = $("<p>");
+
+       var linktext = $("<a id'embedlink'>");
+
+       linktext.attr('href',embed);
+
+       linktext.text(embed);
+
+   
+
+       linktovideo.append(linktext);
+
+       var vidBox = $("<iframe>");
+
+       vidBox.attr('src', embed);
+
+       $("#video").append(vidBox);
+
+       $("#video").prepend(linktovideo);
         
-        var vidBox = $("<iframe>");
-
-        vidBox.attr('src', apiVideo);
-
-        $("#video").append(vidBox);
       });
 })
 
