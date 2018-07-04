@@ -40,65 +40,122 @@ $("#food-button").on("click", function(){
             }
       });
       $("#rec").empty()
+      $("#ingredients").empty();
+      $("#amount").empty();
+      $("#currentrecIMG").empty();
+      $("#recepieINST").empty();
 })
 
 $(document).on("click",".foodimage", function(){
+  first();
+  second();
+  $("#rec").empty();
 
-    $("#rec").empty();
+  var ititle = $("<h3>").text("Ingredients");
 
-    var recID = $(this).attr("data-id");
-    var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" +recID;
-    console.log(queryURL);
+  var atitle = $("<h3>").text("Measurements");
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-      }).then(function(response) {
-        var results = response.meals;
+  var institle =$("<h3>").text("Instructions");
 
-        console.log('results',results);
-
-        var ingredientList = $("<ul>");
-        var amount = $("<ul>")
-
-        for(var i = 1; i <= 20; i++){ 
-        // console.log('number to string for i', 'stringIngrdient'+i.toString());
-        first();
-        second();
-        inOne = response.meals.strIngredient1;
-        inTwo = response.meals.strIngredient2;
-        video = response.meals.strYoutube;
-
-        var ingredientKey = 'strIngredient'+i.toString();
-        var ingredient = results[0][ingredientKey];
-        if (ingredient.length > 0) {
-            console.log('ingredient', ingredient)
-
-            var listItem = $("<li>").text(ingredient);
-
-            ingredientList.append(listItem);
+      $("#ingredients").append(ititle);
+      $("#amount").append(atitle);
+      $("#recepieINST").append(institle);
 
 
-            $("#ingredients").append(ingredientList);
+  
 
-            // this is the value of each valid ingredient 
-        }
-        }
+  var recID = $(this).attr("data-id");
+  var queryURL = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" +recID;
+  console.log(queryURL);
 
-        for(var i = 1; i <= 20; i++){
-            var ingamountKey = 'strMeasure'+i.toString();
-            var ingredientMeasure = results[0][ingamountKey];
-            
-            if (ingredientMeasure.length > 0){
-                
-                var amountlist = $("<li>").text(ingredientMeasure);
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      var results = response.meals;
 
-                amount.append(amountlist);
+      console.log('results',results);
 
-                $("#amount").append(amount);
-            }
-        }
-      });
+      var ingredientList = $("<ul>");
+      var amount = $("<ul>");
+
+      
+
+
+      /// LIST OF INGREDIENTS
+      for(var i = 1; i <= 20; i++){ 
+      var ingredientKey = 'strIngredient'+i.toString();
+      var ingredient = results[0][ingredientKey];
+      if (ingredient.length > 0) {
+          console.log('ingredient', ingredient)
+
+          var listItem = $("<li>").text(ingredient);
+
+          ingredientList.append(listItem);
+
+
+          $("#ingredients").append(ingredientList);
+
+
+          // this is the value of each valid ingredient 
+      }
+
+      
+      }
+      /// LIST OF INGREDIENT MEASURES
+      for(var i = 1; i <= 20; i++){
+          var ingamountKey = 'strMeasure'+i.toString();
+          var ingredientMeasure = results[0][ingamountKey];
+          
+          if (ingredientMeasure.length > 0){
+              
+              var amountlist = $("<li>").text(ingredientMeasure);
+
+              amount.append(amountlist);
+
+              $("#amount").append(amount);
+          }
+
+
+      }
+      // Selected Recepie
+      var recepietitle = $("<h1 id='rectitle'>").text(results[0].strMeal);
+
+      $("#rec").append(recepietitle);
+
+      /// IMAGE OF SELCTED RECEPIE
+      var selrecIMG = results[0].strMealThumb;
+
+      console.log(selrecIMG);
+
+      var fIMG = $("<img id='cIMG'>");
+
+      fIMG.attr("src", selrecIMG);
+
+      console.log(fIMG);
+
+      $("#currentrecIMG").append(fIMG);
+
+      /// INSTRUCTIONS FOR SELECTED RECEPIE
+
+      var recinstructions = results[0].strInstructions;
+
+      var instParagraph = $("<p>");
+
+      instParagraph.text(recinstructions);
+
+      $("#recepieINST").append(instParagraph);
+
+      // Pulling and Appending Youtube Video
+
+      var apiVideo = results[0].strYoutube;
+      
+      var vidBox = $("<iframe>");
+
+      vidBox.attr('src', apiVideo);
+
+      $("#video").append(vidBox);
+    });
 })
 
 // first ingredient walmart search
