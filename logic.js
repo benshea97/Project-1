@@ -183,13 +183,13 @@ $(document).on("click",".foodimage", function(){
       });
 })
 
-$("button.btn.btn-outline-success.my-2.my-sm-0").on("click", function(){
+$(document).on("click",".foodimage", function(){
   event.preventDefault();
   var mainIngredient = $(".form-control.mr-sm-2").val().trim();
     // Here we grab the text from the input box
     // var search = $("#food-input").val();
     // Here we construct our URL
-    var queryURL = "http://api.walmartlabs.com/v1/search?apiKey=avwfn326ass7ejz97edr7w49&ls&query=" + mainIngredient;
+    var queryURL = "https://api.walmartlabs.com/v1/search?apiKey=avwfn326ass7ejz97edr7w49&ls&query=" + mainIngredient;
 
     $.ajax({
       url: queryURL,
