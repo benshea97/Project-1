@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Food Search</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-
-  </head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    
+    <title>EatEasy</title>
+</head>
 <body>
-  <div class="container">
-    <link rel="stylesheet" href="css.css" media="screen">
-    <div id="food-view"></div>
 
- 
-    <body>
+    <h1>Eat Easy</h1>
+
+    <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    
+
+    <div id="rec"></div>
+
+    <div class="row">
+            <div id="ingredients" class="column"></div>
+            <div id="amount" class="column"></div>
+            <div id="currentrecIMG" class="column"></div>
+    </div>
+        <div id="recepieINST"></div>
+        <div id="video"></div>
+    
+
+
+    
 
       <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
     
@@ -74,6 +93,13 @@
               <script type="text/javascript" src="app.js"></script>
 
             
+
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="logic.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </html>
