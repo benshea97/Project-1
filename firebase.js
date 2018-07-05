@@ -1,47 +1,60 @@
+var config = {
+  apiKey: "AIzaSyD22zMFQLX0LSzrND6ccKiFtjQXo4rQFlg",
+  authDomain: "recipe-440f0.firebaseapp.com",
+  databaseURL: "https://recipe-440f0.firebaseio.com",
+  projectId: "recipe-440f0",
+  storageBucket: "",
+  messagingSenderId: "383790739796"
+};
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCD1bODZOBTbf86Xw6IGD06bhQiC94RrY8",
-    authDomain: "eat-easy-f802a.firebaseapp.com",
-    databaseURL: "https://eat-easy-f802a.firebaseio.com",
-    projectId: "eat-easy-f802a",
-    storageBucket: "",
-    messagingSenderId: "161860057580"
-  };
-  firebase.initializeApp(config);
+firebase.initializeApp(config);
 
-//Variable to reference database 
-      var database = firebase.database();
+var database = firebase.database();
 
-//initial values
-var userSearch = "";
-var recipesSaved = "";
 
-//Create function that prevents default behavior in the case of an error and that listens for click event
-      $("#search-button").on("click", function(event) {
-      //Prevent default behavior
-      event.preventDefault();
+  var search = "";
  
-      $("user-recipe-input").on("click", function(event) {
-      event.
-      }
+  
+  $("#search-view1").append("<br>" + "Recent Searches: " + "<br>").css({"text-decoration": "underline"});
 
-      userSearch = $("#user-search-input").val().trim()
-      userRecipe = $("#user-recipe-input").val().trim()
+  $("button.btn.btn-outline-success.my-2.my-sm-0").on("click", function(event) {
+      console.log("firebase click heard");
 
-//Next, because we want to create a collection, we use push to push the added train object to the database.
+      event.preventDefault();
+
+      search = $(".form-control.mr-sm-2").val().trim();
+    
+      console.log(search);
+      
       database.ref().push({
-        userSearch: searchesSaved
-        recipesSaved: recipesSaved
-        });
-
+        search: search,
+        
       });
+     
+    });
 
-database.ref().on("value", function(snapshot) {
+    database.ref().orderByChild("age").limitToLast(3).on("child_added", function(snapshot) {
+      // Change the HTML to reflect
+      console.log(snapshot.val().search);
+      $("#search-view2").append(snapshot.val().search + "<br>");
+  
+  
+  }, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
 
-//Update containers that house searches and saved recipes
-$("user-search-input").text(snapshot.val().userSearch);
-$("user-recipe-input").text(snapshot.val().recipeSaved);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
